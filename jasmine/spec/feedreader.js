@@ -1,4 +1,3 @@
-"use strict";
 
 /* feedreader.js
  *
@@ -11,6 +10,7 @@
  * to ensure they don't run until the DOM is ready.
  */
 $(function() {
+    'use strict';
     /* This is our first test suite - a test suite just contains
     * a related set of tests. This suite is all about the RSS
     * feeds definitions, the allFeeds variable in our application.
@@ -34,10 +34,10 @@ $(function() {
          * and that the URL is not empty.
          */
          it('has URLs defined', function(){
-            for(var feed in allFeeds) 
+            for(var i=0; i< allFeeds.length; i++) 
                 {
-                    expect(allFeeds[feed].url).toBeDefined();
-                    expect(allFeeds[feed].url.length).not.toBe(0);
+                    expect(allFeeds[i].url).toBeDefined();
+                    expect(allFeeds[i].url.length).not.toBe(0);
                 }
         });
 
@@ -48,10 +48,10 @@ $(function() {
          */
 
         it('has Names defined',function(){
-            for(var feed in allFeeds)
+            for(var i=0; i< allFeeds.length; i++) 
                 {
-                    expect(allFeeds[feed].name).toBeDefined();
-                    expect(allFeeds[feed].name.length).not.toBe(0);
+                    expect(allFeeds[i].name).toBeDefined();
+                    expect(allFeeds[i].name.length).not.toBe(0);
                 }
         });
     });
