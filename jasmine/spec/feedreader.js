@@ -69,8 +69,6 @@ $(function() {
 
          */
 
- 
-
             it('is hidden by default', function(){
                //setStyleFixtures('..menu-hidden .slide-menu {transform: translate3d(-12em, 0, 0);transition: transform 0.2s;}');
                 var body = $("body");
@@ -133,28 +131,23 @@ $(function() {
          */
 
         describe('New Feed Selection', function() {
-      
-            var firstFeed,
-                secondFeed;
 
+            var title1, title2; 
             beforeEach(function(done) {
-            //first feed
-                loadFeed(0, function() {
-                firstFeed = $('div.feed').html();
-                done();
+
+                    loadFeed(0, done); 
+                    title1 =  $('.header-title')[0].textContent;
+                    done();
+
+                    loadFeed(1, done); 
+                    title2 =  $('.header-title')[0].textContent;
+                    done();
+         
             });
 
-            //second feed
-            loadFeed(1, function() {
-                secondFeed = $('div.feed').html();
-                done();
+            it('feed content changes', function() {
+                //compare titles from first and second feed
+                expect(title1).not.toBe(title2);                  
             });
-         });
-
-         it('new feed content changes', function() {
-            //compare the data from first loaded feed to second loaded feed
-            expect(firstFeed === secondFeed).toBe(false);
-         });
-
      });
 }());
