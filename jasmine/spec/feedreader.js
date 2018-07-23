@@ -33,14 +33,12 @@ $(function() {
          * in the allFeeds object and ensures it has a URL defined
          * and that the URL is not empty.
          */
-         it('has URLs defined',function(){
-            for(var feed in allFeeds){
-               
-                expect(allFeeds[feed].url).toBeDefined();
-                expect(allFeeds[feed].url.length).not.toBe(0);
-
-            }
-
+         it('has URLs defined', function(){
+            for(var feed in allFeeds) 
+                {
+                    expect(allFeeds[feed].url).toBeDefined();
+                    expect(allFeeds[feed].url.length).not.toBe(0);
+                }
         });
 
 
@@ -49,14 +47,13 @@ $(function() {
          * and that the name is not empty.
          */
 
-           it('has Names defined',function(){
-            for(var feed in allFeeds){
-            
-                expect(allFeeds[feed].name).toBeDefined();
-                expect(allFeeds[feed].name.length).not.toBe(0);
-
-            }
-            });
+        it('has Names defined',function(){
+            for(var feed in allFeeds)
+                {
+                    expect(allFeeds[feed].name).toBeDefined();
+                    expect(allFeeds[feed].name.length).not.toBe(0);
+                }
+        });
     });
 
 
@@ -71,10 +68,10 @@ $(function() {
 
          */
 
-            it('is hidden by default', function(){
-                var body = $("body");
-                expect(body.hasClass('menu-hidden')).toEqual(true);
-            });
+        it('is hidden by default', function(){
+            var body = $("body");
+            expect(body.hasClass('menu-hidden')).toEqual(true);
+        });
 
 
          /* TODO: Write a test that ensures the menu changes
@@ -83,20 +80,20 @@ $(function() {
           * clicked and does it hide when clicked again.
           */
 
-            it('toggles open and close', function(){
+        it('toggles open and close', function(){
 
-                const menuIcon = $('.menu-icon-link');
-                const body = $('body');
+            const menuIcon = $('.menu-icon-link');
+            const body = $('body');
 
-                //first click should show the menu
-                menuIcon.trigger('click');
-                expect(body.hasClass('menu-hidden')).toEqual(false);
+            //first click should show the menu
+            menuIcon.trigger('click');
+            expect(body.hasClass('menu-hidden')).toEqual(false);
 
-                //second click should hide the menu again
-                menuIcon.trigger('click');
-                expect(body.hasClass('menu-hidden')).toEqual(true);
+            //second click should hide the menu again
+            menuIcon.trigger('click');
+            expect(body.hasClass('menu-hidden')).toEqual(true);
                     
-            });
+        });
 
     });
 
@@ -109,24 +106,20 @@ $(function() {
          * the use of Jasmine's beforeEach and asynchronous done() function.
          */
 
-        describe('Initial Entries', function() {
+    describe('Initial Entries', function() {
 
-
-            beforeEach(function(done) {
-                loadFeed(0,done);
-                });
-      
-            //Count the feed entry elements under the feed container
-            it('feed container has entries', function(){
-                var allFeedElements = $( ".entry" );
-                var entryElements = $('.feed').find(allFeedElements);
-                expect(entryElements.length).toBeGreaterThan(0);
-
-
-            });
-
-
+        beforeEach(function(done) {
+            loadFeed(0,done);
         });
+      
+        //Count the feed entry elements under the feed container
+        it('feed container has entries', function(){
+            var allFeedElements = $( ".entry" );
+            var entryElements = $('.feed').find(allFeedElements);
+            expect(entryElements.length).toBeGreaterThan(0);
+        });
+
+    });
 
     /* TODO: Write a new test suite named "New Feed Selection" */
 
@@ -135,26 +128,27 @@ $(function() {
          * Remember, loadFeed() is asynchronous.
          */
 
-        describe('New Feed Selection', function() {
+    describe('New Feed Selection', function() {
 
-            var title1, title2; 
-            beforeEach(function(done) {
+        var title1, title2; 
 
-                    //load first feed and record the title
-                    loadFeed(0, done); 
-                    title1 =  $('.header-title')[0].textContent;
-                    done();
+        beforeEach(function(done) {
 
-                    //load the second feed and record the title
-                    loadFeed(1, done); 
-                    title2 =  $('.header-title')[0].textContent;
-                    done();
+            //load first feed and record the title
+            loadFeed(0, done); 
+            title1 =  $('.header-title')[0].textContent;
+            done();
+
+            //load the second feed and record the title
+            loadFeed(1, done); 
+            title2 =  $('.header-title')[0].textContent;
+            done();
          
-            });
+        });
 
-            it('feed content changes', function() {
-                //compare titles from first and second feed
-                expect(title1).not.toBe(title2);                  
-            });
+        it('feed content changes', function() {
+            //compare titles from first and second feed
+            expect(title1).not.toBe(title2);                  
+        });
      });
 }());

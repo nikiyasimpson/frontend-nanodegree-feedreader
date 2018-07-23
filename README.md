@@ -6,7 +6,10 @@ This project is a web-based application that reads RSS feeds for developers and 
 This application uses a [RSS to JSON](https://rsstojson.udacity.com/parseFeed) parser to grab RSS feeds and display the article and it's content on the page.
 
 ## How to Use
-Click on the menu icon in the top left hand corner to see all the topics available. Click on a topic area to view articles in that feed. Click on the article title to be taken to the full article page.
+1. To start the application, open the index.html file from your internet browser
+2. Click on the menu icon in the top left hand corner to see all the topics available. Click on a topic area to view articles in that feed. Click on the article title to be taken to the full article page.
+
+
 
 ### To Add RSS Feeds to the Project
 1. Add RSS Name and URL to the allFeeds array in the app.js file. 
