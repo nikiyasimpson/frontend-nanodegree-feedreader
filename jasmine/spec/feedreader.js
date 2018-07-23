@@ -70,7 +70,6 @@ $(function() {
          */
 
             it('is hidden by default', function(){
-               //setStyleFixtures('..menu-hidden .slide-menu {transform: translate3d(-12em, 0, 0);transition: transform 0.2s;}');
                 var body = $("body");
                 expect(body.hasClass('menu-hidden')).toEqual(true);
             });
@@ -86,9 +85,12 @@ $(function() {
 
                 const menuIcon = $('.menu-icon-link');
                 const body = $('body');
+
+                //first click should show the menu
                 menuIcon.trigger('click');
                 expect(body.hasClass('menu-hidden')).toEqual(false);
 
+                //second click should hide the menu again
                 menuIcon.trigger('click');
                 expect(body.hasClass('menu-hidden')).toEqual(true);
                     
@@ -112,9 +114,10 @@ $(function() {
                 loadFeed(0,done);
                 });
       
-
+            //Count the feed entry elements under the feed container
             it('feed container has entries', function(){
-                var entryElements = document.getElementsByClassName('entry');
+                var allFeedElements = $( ".entry" );
+                var entryElements = $('.feed').find(allFeedElements);
                 expect(entryElements.length).toBeGreaterThan(0);
 
 
@@ -135,10 +138,12 @@ $(function() {
             var title1, title2; 
             beforeEach(function(done) {
 
+                    //load first feed and record the title
                     loadFeed(0, done); 
                     title1 =  $('.header-title')[0].textContent;
                     done();
 
+                    //load the second feed and record the title
                     loadFeed(1, done); 
                     title2 =  $('.header-title')[0].textContent;
                     done();
