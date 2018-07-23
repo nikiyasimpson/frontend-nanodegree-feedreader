@@ -1,3 +1,4 @@
+"use strict";
 /* app.js
  *
  * This is our RSS feed reader application. It uses the Google
@@ -120,7 +121,7 @@ $(function() {
         var item = $(this);
 
         $('body').addClass('menu-hidden');
-        loadFeed(item.data('id'));
+        loadFeed(item.data('id'));jQuery
         return false;
     });
 
