@@ -34,11 +34,13 @@ $(function() {
          * and that the URL is not empty.
          */
          it('has URLs defined', function(){
-            for(var i=0; i< allFeeds.length; i++) 
-                {
-                    expect(allFeeds[i].url).toBeDefined();
-                    expect(allFeeds[i].url.length).not.toBe(0);
-                }
+
+            allFeeds.forEach(checkURLs);
+
+            function checkURLs(item){
+                expect(item.url).toBeDefined();
+                expect(item.url.length).not.toBe(0);
+            }
         });
 
 
@@ -48,11 +50,13 @@ $(function() {
          */
 
         it('has Names defined',function(){
-            for(var i=0; i< allFeeds.length; i++) 
-                {
-                    expect(allFeeds[i].name).toBeDefined();
-                    expect(allFeeds[i].name.length).not.toBe(0);
-                }
+
+            allFeeds.forEach(checkNames);
+
+            function checkNames(item){
+                expect(item.name).toBeDefined();
+                expect(item.name.length).not.toBe(0);
+            }
         });
     });
 
