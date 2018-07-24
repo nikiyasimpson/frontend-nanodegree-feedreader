@@ -24,7 +24,10 @@ $(function() {
          * page?
          */
         it('are defined', function() {
+            //Test to make sure allFeeds array is defined
             expect(allFeeds).toBeDefined();
+
+            //Test to make sure that the allFeeds array has at least one entry in the array of RSS feeds
             expect(allFeeds.length).not.toBe(0);
         });
 
@@ -38,7 +41,10 @@ $(function() {
             allFeeds.forEach(checkURLs);
 
             function checkURLs(item){
+                //Tests to make sure the url property for the feed is defined
                 expect(item.url).toBeDefined();
+
+                //Tests to make sure the url property has a value
                 expect(item.url.length).not.toBe(0);
             }
         });
@@ -54,7 +60,11 @@ $(function() {
             allFeeds.forEach(checkNames);
 
             function checkNames(item){
+
+                //Tests to make sure the name property for each feed is defined
                 expect(item.name).toBeDefined();
+
+                //Tests to make sure the name property has a value defined
                 expect(item.name.length).not.toBe(0);
             }
         });
@@ -73,6 +83,8 @@ $(function() {
          */
 
         it('is hidden by default', function(){
+
+            //Tests to see if the menu div is hidden by default using the menu-hidden css class
             var body = $("body");
             expect(body.hasClass('menu-hidden')).toEqual(true);
         });
@@ -91,10 +103,14 @@ $(function() {
 
             //first click should show the menu
             menuIcon.trigger('click');
+
+            //Tests to make sure the menu div appears when the menu icon is clicked
             expect(body.hasClass('menu-hidden')).toEqual(false);
 
             //second click should hide the menu again
             menuIcon.trigger('click');
+
+            //Tests to make sure the menu div is hidden again when the menu icon is clicked again
             expect(body.hasClass('menu-hidden')).toEqual(true);
                     
         });
@@ -111,7 +127,7 @@ $(function() {
          */
 
     describe('Initial Entries', function() {
-
+        // Before tests, load all the feeds
         beforeEach(function(done) {
             loadFeed(0,done);
         });
@@ -119,6 +135,8 @@ $(function() {
         //Count the feed entry elements under the feed container
         it('feed container has entries', function(){
             var entryElements = $('.feed .entry');
+
+            //Tests to see make sure there is at least one entry for each feed
             expect(entryElements.length).toBeGreaterThan(0);
         });
 
@@ -135,6 +153,8 @@ $(function() {
 
         var title1, title2; 
 
+
+        //Before test run load the first and second feed to compare values for tests
         beforeEach(function(done) {
 
             loadFeed(0, function(){
@@ -150,7 +170,7 @@ $(function() {
         });
 
         it('feed content changes', function() {
-            //compare titles from first and second feed
+            //Test to compare titles from first and second feed to make sure they aren't the same
             expect(title1).not.toBe(title2);                  
         });
      });
