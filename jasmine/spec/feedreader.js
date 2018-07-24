@@ -137,15 +137,15 @@ $(function() {
 
         beforeEach(function(done) {
 
-            //load first feed and record the title
-            loadFeed(0, done); 
-            title1 =  $('.header-title')[0].textContent;
-            done();
-
-            //load the second feed and record the title
-            loadFeed(1, done); 
-            title2 =  $('.header-title')[0].textContent;
-            done();
+            loadFeed(0, function(){
+                //load the first feed and place in variable to compare
+                title1 = $('.feed').html();
+                //load the second feed and place in variable to compare
+                loadFeed(1, function(){
+                    title2 = $('.feed').html();
+                    done();
+                });
+            });
          
         });
 
