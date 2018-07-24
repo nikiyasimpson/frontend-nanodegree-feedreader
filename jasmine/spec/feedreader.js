@@ -118,8 +118,7 @@ $(function() {
       
         //Count the feed entry elements under the feed container
         it('feed container has entries', function(){
-            var allFeedElements = $( ".entry" );
-            var entryElements = $('.feed').find(allFeedElements);
+            var entryElements = $('.feed .entry');
             expect(entryElements.length).toBeGreaterThan(0);
         });
 
